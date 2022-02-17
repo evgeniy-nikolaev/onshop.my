@@ -8,10 +8,6 @@ class RouteController
 
     static private $_instance;
 
-    private function __construct()
-    {
-    }
-
     private function __clone()
     {
     }
@@ -22,6 +18,10 @@ class RouteController
         }
 
         return self::$_instance = new self;
+    }
+
+    private function __construct()
+    {
     }
 
 }

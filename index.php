@@ -17,6 +17,3 @@ try {
 catch (RouteException $e){
 exit($e->getMessage());
 }
-catch (RangeException $e){
-    exit($e->getMessage());
-}
