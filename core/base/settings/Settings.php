@@ -36,6 +36,11 @@ class Settings
         ]
     ];
 
+    private $templateArr = [
+        'text' => ['name', 'phone', 'address'],
+        'textarea' => ['content', 'keywords']
+    ];
+
     private function __construct(){
     }
 
@@ -43,10 +48,10 @@ class Settings
     }
 
     static public function get($property){
-        return self::$_instance->$property;
+        return self::instance()->$property;
     }
 
-    static public function ($instance){
+    static public function instance() {
         if(self::$_instance instanceof self){
             return self::$_instance;
         }

@@ -23,7 +23,8 @@ class RouteController
 
     private function __construct()
     {
-
+        $s = Settings::get('routes');
+        exit();
     }
 
 }
