@@ -1,6 +1,7 @@
 <?php
 namespace core\base\controllers;
 use core\base\settings\Settings;
+use core\base\settings\ShopSettings;
 class RouteController
 {
     static private $_instance;
@@ -15,9 +16,8 @@ class RouteController
     }
     private function __construct()
     {
-        $arr = ['1', 2, 3, 4, 5];
-        print_arr($arr);
         $s = Settings::get('routes');
+        $s1 = ShopSettings::get('routes');
         exit();
     }
 }
