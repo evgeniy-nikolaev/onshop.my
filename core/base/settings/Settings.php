@@ -1,7 +1,12 @@
 <?php
 
-
 namespace core\base\settings;
+
+
+
+
+
+
 
 
 class Settings
@@ -12,7 +17,7 @@ class Settings
     private $routes = [
         'admin' => [
             'name' => 'admin',
-            'path' => 'core/admin/controllers/',
+            'path' => 'core/admin/controller/',
             'hrUrl' => false //human readable resource
         ],
         'settings' => [
@@ -23,7 +28,7 @@ class Settings
             'hrUrl' => false
         ],
         'user' => [
-            'path' => 'core/user/controllers/',
+            'path' => 'core/user/controller/',
             'hrUrl' => true,
             'routes' => [
 
@@ -40,39 +45,64 @@ class Settings
         'text' => ['name', 'phone', 'address'],
         'textarea' => ['content', 'keywords']
     ];
+
     private $lalala = 'lalala';
 
-    private function __construct(){
+    private function __construct()
+    {
     }
 
-    private function __clone(){
+    private function __clone()
+    {
     }
 
     static public function get($property){
         return self::instance()->$property;
     }
 
+
+
+
+
+
+
+
+
+
+
     static public function instance() {
         if(self::$_instance instanceof self){
             return self::$_instance;
         }
+
         return self::$_instance = new self;
     }
+
     public function clueProperties($class){
+
         $baseProperties = [];
+
         foreach ($this as $name => $item){
             $property = $class::get($name);
+
             if(is_array($property) && is_array($item)){
+
                 $baseProperties[$name] = $this->arrayMergeRecursive($this->$name, $property);
                 continue;
             }
+
             if(!$property) $baseProperties[$name] = $this->$name;
         }
+
         return $baseProperties;
     }
+
     public function arrayMergeRecursive(){
+
         $arrays = func_get_args();
+
         $base = array_shift($arrays);
+
         foreach ($arrays as $array){
             foreach ($array as $key => $value){
                 if(is_array($value) && is_array($base[$key])){
@@ -86,6 +116,7 @@ class Settings
                 }
             }
         }
+
         return $base;
     }
 }
